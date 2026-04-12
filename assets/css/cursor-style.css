@@ -1,0 +1,59 @@
+/* Force disable the default cursor on desktop to override theme styles */
+@media (min-width: 1025px) {
+    * {
+        cursor: none !important;
+    }
+}
+
+/* Hide our custom cursor on mobile/tablet */
+@media (max-width: 1024px) {
+    .cursor-follower-orange, .cursor-follower-gray, .cursor-arrow {
+        display: none !important;
+    }
+}
+
+/* Base styles for ALL cursor elements */
+.cursor-follower-orange,
+.cursor-follower-gray,
+.cursor-arrow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 9999;
+    will-change: transform;
+    border-radius: 50%;
+}
+
+/* Style for the PRIMARY (Orange) follower circle */
+.cursor-follower-orange {
+    --size: 50px;
+    width: var(--size);
+    height: var(--size);
+    background-color: rgba(242, 87, 73, 0.2);
+    border: 1px solid white;
+    transform: translate(calc(var(--size) / -2), calc(var(--size) / -2));
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Style for the SECONDARY (Gray) follower circle */
+.cursor-follower-gray {
+    --size: 50px;
+    width: var(--size);
+    height: var(--size);
+    background-color: rgba(128, 128, 128, 0.2);
+    border: 1px solid white;
+    transform: translate(calc(var(--size) / -2), calc(var(--size) / -2));
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    z-index: 9998;
+}
+
+/* Style for the PNG arrow */
+.cursor-arrow {
+    --size: 22px;
+    width: var(--size);
+    height: var(--size);
+    transform: translate(calc(var(--size) / -2), calc(var(--size) / -2));
+    opacity: 0;
+    border-radius: 0;
+}
