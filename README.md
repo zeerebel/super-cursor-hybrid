@@ -36,6 +36,20 @@ assets/
 - The default cursor is globally hidden with `cursor: none !important` on desktop only.
 - `will-change: transform` is applied to all cursor elements for compositor-layer promotion.
 
+## Development History
+
+This plugin went through 12 iterative versions to reach its current architecture. Major milestones include:
+
+- **v3.4.1** — Initial release. Single jQuery-based follower with PHP-injected HTML and inline SVG arrow.
+- **v3.7.1** — Full rewrite. Dropped jQuery, switched to vanilla JS with GSAP ticker, moved DOM creation from PHP to JavaScript, added `wp_localize_script` for asset paths, and added Elementor/admin safety checks.
+- **v3.7.2** — Introduced the dual-follower system (fast + slow circles with different interpolation rates).
+- **v3.7.3** — Added media-aware hover detection and sequential arrow reveal logic.
+- **v3.7.4** — Replaced distance-based arrow trigger with velocity-based detection (gray follower must stop moving before arrow appears).
+- **v3.7.6–3.7.8** — Experimented with manual linear interpolation vs. GSAP duration-based animation, dynamic mouse-speed scaling, and animation constant extraction.
+- **v3.7.9** — Final version. Removed dynamic scaling, widened the speed gap between followers for a more dramatic trail, and added scroll-based hover invalidation.
+
+See [changelog.md](changelog.md) for the full version-by-version breakdown.
+
 ## Requirements
 
 - WordPress 5.8+
