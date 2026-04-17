@@ -1,59 +1,60 @@
-/* Force disable the default cursor on desktop to override theme styles */
+/* Super Cursor Hybrid - Cursor Styles */
+
+/* Hide default cursor on desktop */
 @media (min-width: 1025px) {
-    * {
+    *,
+    *::before,
+    *::after {
         cursor: none !important;
     }
 }
 
-/* Hide our custom cursor on mobile/tablet */
+/* Hide custom cursor on mobile/tablet */
 @media (max-width: 1024px) {
-    .cursor-follower-orange, .cursor-follower-gray, .cursor-arrow {
+    .follower,
+    .cursor-arrow {
         display: none !important;
     }
 }
 
-/* Base styles for ALL cursor elements */
-.cursor-follower-orange,
-.cursor-follower-gray,
-.cursor-arrow {
+/* --- Follower base --- */
+.follower {
+    --size: 40px;
     position: fixed;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    z-index: 9999;
-    will-change: transform;
+    top: calc(var(--size) / -2);
+    left: calc(var(--size) / -2);
+    width: var(--size);
+    height: var(--size);
     border-radius: 50%;
+    pointer-events: none;
+    z-index: 99999;
+    will-change: transform;
 }
 
-/* Style for the PRIMARY (Orange) follower circle */
-.cursor-follower-orange {
-    --size: 50px;
-    width: var(--size);
-    height: var(--size);
-    background-color: rgba(242, 87, 73, 0.2);
-    border: 1px solid white;
-    transform: translate(calc(var(--size) / -2), calc(var(--size) / -2));
-    transition: background-color 0.3s ease, border-color 0.3s ease;
+/* Orange follower - fast */
+.follower-orange {
+    --size: 20px;
+    background: rgba(255, 140, 50, 0.35);
+    z-index: 100000;
 }
 
-/* Style for the SECONDARY (Gray) follower circle */
-.cursor-follower-gray {
-    --size: 50px;
-    width: var(--size);
-    height: var(--size);
-    background-color: rgba(128, 128, 128, 0.2);
-    border: 1px solid white;
-    transform: translate(calc(var(--size) / -2), calc(var(--size) / -2));
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-    z-index: 9998;
+/* Gray follower - slow */
+.follower-gray {
+    --size: 40px;
+    background: rgba(140, 140, 140, 0.2);
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Style for the PNG arrow */
+/* Arrow image inside gray follower */
 .cursor-arrow {
-    --size: 22px;
-    width: var(--size);
-    height: var(--size);
-    transform: translate(calc(var(--size) / -2), calc(var(--size) / -2));
+    width: 24px;
+    height: 24px;
     opacity: 0;
-    border-radius: 0;
+    pointer-events: none;
+    will-change: opacity;
+    user-select: none;
+    -webkit-user-select: none;
 }
